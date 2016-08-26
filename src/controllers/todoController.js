@@ -21,7 +21,7 @@ router.route('/')
     })
   })
   .post((req, res, next) => {
-    todoService.add(req.body).then((response) => {
+    todoService.create(req.body).then((response) => {
       res.json({data: response.toJSON()});
     }).catch((err) => {
       next(err);
@@ -35,11 +35,39 @@ router.route('/:todoId')
         if (response) {
           res.json({data: response.toJSON()});
         } else {
-          next({errorCode: 404, message: 'Todo with the supplied ID does not exist.'});
+          next({statusCode: 404, message: 'Todo with the supplied ID does not exist.'});
         }
       }).catch((err) => {
         next(err);
       })
+    } catch (err) {
+      next(err);
+    }
+  })
+  .put((req, res, next) => {
+    try {
+      todoService.update(req.params.todoId, req.body).then((response) => {
+        res.json({success: true, data: response.toJSON()});
+      }).catch((err) => {
+        if (err.message === 'No Rows Updated') {
+          next({statusCode: 404, message: 'Todo with the supplied ID does not exist.'})
+        } else {
+          next(err);
+        }
+      });
+    } catch (err) {
+      next(err);
+    }
+  })
+  .delete((req, res, next) => {
+    try {
+      todoService.destroy(req.params.todoId).then((response) => {
+          res.json({success: true});
+      }).catch((err) => {
+        if (err.message === 'No Rows Deleted') {
+          next({statusCode: 404, message: 'Todo with the supplied ID does not exist'});
+        }
+      });
     } catch (err) {
       next(err);
     }

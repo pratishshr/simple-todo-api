@@ -1,3 +1,4 @@
+var moment = require('moment');
 const TABLE_NAME = 'todos';
 
 exports.up = function (knex, Promise) {
@@ -5,8 +6,8 @@ exports.up = function (knex, Promise) {
       table.increments('id').primary();
       table.string('title').notNullable();
       table.string('description');
-      table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
-      table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
+      table.timestamp('created_at').notNullable().defaultTo(moment().format());
+      table.timestamp('updated_at').notNullable().defaultTo(moment().format());
     });
 };
 

@@ -5,10 +5,10 @@
 
 export default function errorHandler(err, req, res, next) {
   console.log(err);
-  let errorCode = err.errorCode || 500;
-  res.status(errorCode).json({
+  let statusCode = err.statusCode || 500;
+  res.status(statusCode).json({
     error: {
-      errorCode: errorCode,
+      statusCode: statusCode,
       message: err.message || 'Internal server error'
     }
   });

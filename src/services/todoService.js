@@ -22,17 +22,40 @@ export function fetchById(id) {
     return todoDao.fetchById(id);
   }
   throw new ValidationError({
-    errorCode: 400,
+    statusCode: 400,
     message: `Supplied value(s) for ${validationErrors.toString()} is not an integer`
   });
 }
 
 export function create(todo) {
-  let validationErrors = validator.checkForEmpty({title: todo.title});
+  let validationErrors = validator.checkForString({title: todo.title});
   if(!validationErrors.length) {
     return todoDao.create(todo);
   }
   throw new ValidationError({
+    statusCode: 400,
+    message: `${validationErrors.toString()} should be a non-empty string`
+  });
+}
 
+export function update(todoId, todo) {
+  let validationErrors = validator.checkForString({title: todo.title});
+  if(!validationErrors.length) {
+    return todoDao.update(todoId, todo);
+  }
+  throw new ValidationError({
+    statusCode: 400,
+    message: `${validationErrors.toString()} should be a non-empty string`
+  });
+}
+
+export function destroy(todoId) {
+  let validationErrors = validator.checkForInt({id: todoId});
+  if(!validationErrors.length) {
+    return todoDao.destroy(todoId);
+  }
+  throw new ValidationError({
+    statusCode: 400,
+    message: `${validationErrors.toString()} should be an integer`
   })
 }

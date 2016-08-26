@@ -41,7 +41,7 @@ A simple api with basic CRUD operations for ToDo applications.
  ```
 #### Method: POST
 
-###### Path :/todos
+###### Path :/todos - Create new ToDo
  ``` javascript
  request = {
   "title": "Some todo",
@@ -61,7 +61,7 @@ response = {
 
 #### METHOD: PUT
 
-###### Path: /todos/:todoId
+###### Path: /todos/:todoId - Update ToDo
 ```javascript
 request = {
               "title": "Another todo",
@@ -71,7 +71,7 @@ request = {
 
 #### Method: DELETE
 
-###### Path: /todos/:todoId
+###### Path: /todos/:todoId - Delete Todo
 ```javascript
 response = {
              "success": true

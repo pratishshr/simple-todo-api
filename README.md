@@ -1,44 +1,81 @@
-# node-express-starter
+# simple-todo-api
+A simple api with basic CRUD operations for ToDo applications.
 
-Initial configuration for a node-express project.
+## API Reference
 
-## Setup
-```shell
- # Rename config.json.example to config.json and add necessary configurations
+#### Method: GET
+###### Path /todos - Fetch all todos
+ ```javascript
+    response = {
+                 "data": [
+                   {
+                     "id": 1,
+                     "title": "Make a simple API",
+                     "description": "An api with node and express",
+                     "created_at": "2016-08-26T05:21:24.000Z",
+                     "updated_at": "2016-08-26T05:21:24.000Z"
+                   },
+                   {
+                     "id": 2,
+                     "title": "Make a CRUD application with React",
+                     "description": "CRUD app using the simple todo api as the back end",
+                     "created_at": "2016-08-26T05:21:24.000Z",
+                     "updated_at": "2016-08-26T05:21:24.000Z"
+                   }
+                 ]
+               }
+ ```
+ 
+###### Path /todos/:todoId - Fetch todo by id
+ 
+ ```javascript
+    response = {
+                 "data": {
+                   "id": 1,
+                   "title": "Make a simple API",
+                   "description": "An api with node and express",
+                   "created_at": "2016-08-26T05:21:24.000Z",
+                   "updated_at": "2016-08-26T05:21:24.000Z"
+                 }
+               }
+ ```
+#### Method: POST
 
- # Install dependencies
- npm install
+###### Path :/todos
+ ``` javascript
+ request = {
+  "title": "Some todo",
+  "description": "description"
+ }
  
- # Run server with nodemon
- npm run dev
+response = {
+  "data": {
+    "title": "Some todo",
+    "description": "description",
+    "created_at": "2016-08-26T12:01:12+05:45",
+    "id": 6
+  }
+}
+```
  
- # Build and run server
- npm start
- 
- default port: 4444
- 
- # Alternatively, set environment variable PORT to change the port number.
- PORT=8080 npm run dev
- 
- PORT=8080 npm start
- 
+
+#### METHOD: PUT
+
+###### Path: /todos/:todoId
+```javascript
+request = {
+              "title": "Another todo",
+              "description": "Another description"
+          }
 ```
 
-## Migrations
-```shell
-# Install knex globally 
-npm install knex -g
+#### Method: DELETE
 
-# Run migration
-cd src
-knex migrate:latest
-
-# Rollback
-knex migrate: rollback
-
-# Seeds
-knex seed:run
-```
-
- open http://localhost:4444 in the browser
- sample resource: http://localhost:4444/users            
+###### Path: /todos/:todoId
+```javascript
+response = {
+             "success": true
+           }
+```           
+ 
+ 

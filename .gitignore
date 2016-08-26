@@ -5,7 +5,7 @@ node_modules
 dist
 
 # configuration file #
-# config.json
+config.json
 
 # logs #
 *.log

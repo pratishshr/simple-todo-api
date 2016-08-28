@@ -6,6 +6,7 @@ exports.up = function (knex, Promise) {
       table.increments('id').primary();
       table.string('title').notNullable();
       table.string('description');
+      table.boolean('is_complete').defaultTo(false);
       table.timestamp('created_at').notNullable().defaultTo(moment().format());
       table.timestamp('updated_at').notNullable().defaultTo(moment().format());
     });

@@ -8,6 +8,9 @@ import express from 'express';
 // Services
 import * as todoService from '../services/todoService';
 
+// Libraries
+import camelize from 'camelize';
+
 let router = express.Router();
 
 /**
@@ -17,12 +20,12 @@ let router = express.Router();
 router.route('/')
   .get((req, res, next) => {
     todoService.fetchAll().then((response) => {
-      res.json({data: response.toJSON()});
+      res.json({data: camelize(response.toJSON())});
     })
   })
   .post((req, res, next) => {
     todoService.create(req.body).then((response) => {
-      res.json({data: response.toJSON()});
+      res.json({data: camelize(response.toJSON())});
     }).catch((err) => {
       next(err);
     })
@@ -33,7 +36,7 @@ router.route('/:todoId')
     try {
       todoService.fetchById(req.params.todoId).then((response) => {
         if (response) {
-          res.json({data: response.toJSON()});
+          res.json({data: camelize(response.toJSON())});
         } else {
           next({statusCode: 404, message: 'Todo with the supplied ID does not exist.'});
         }
@@ -47,7 +50,7 @@ router.route('/:todoId')
   .put((req, res, next) => {
     try {
       todoService.update(req.params.todoId, req.body).then((response) => {
-        res.json({success: true, data: response.toJSON()});
+        res.json({success: true, data: camelize(response.toJSON())});
       }).catch((err) => {
         if (err.message === 'No Rows Updated') {
           next({statusCode: 404, message: 'Todo with the supplied ID does not exist.'})

@@ -28,30 +28,23 @@ export function fetchById(id) {
 }
 
 export function create(todo) {
-  let validationErrors = validator.checkForString({title: todo.title});
-  if(!validationErrors.length) {
-    return todoDao.create(todo);
-  }
-  throw new ValidationError({
-    statusCode: 400,
-    message: `${validationErrors.toString()} should be a non-empty string`
-  });
+  return todoDao.create(todo);
 }
 
 export function update(todoId, todo) {
-  let validationErrors = validator.checkForString({title: todo.title});
-  if(!validationErrors.length) {
+  let validationErrors = validator.checkForInt({id: todoId});
+  if (!validationErrors.length) {
     return todoDao.update(todoId, todo);
   }
   throw new ValidationError({
     statusCode: 400,
-    message: `${validationErrors.toString()} should be a non-empty string`
-  });
+    message: `${validationErrors.toString()} should be an integer`
+  })
 }
 
 export function destroy(todoId) {
   let validationErrors = validator.checkForInt({id: todoId});
-  if(!validationErrors.length) {
+  if (!validationErrors.length) {
     return todoDao.destroy(todoId);
   }
   throw new ValidationError({

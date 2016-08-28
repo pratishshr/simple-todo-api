@@ -18,6 +18,7 @@ export function create(todo) {
   return Todo.forge({
       title: todo.title,
       description: todo.description,
+      is_complete: todo.is_complete || false,
       created_at: moment().format()
     })
     .save();
@@ -30,6 +31,7 @@ export function update(todoId, todo) {
     .save({
       title: todo.title,
       description: todo.description,
+      is_complete: todo.is_complete || false,
       updated_at: moment().format()
     });
 }

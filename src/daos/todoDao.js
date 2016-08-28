@@ -7,7 +7,7 @@ import Todo from '../models/Todo';
 import moment from 'moment';
 
 export function fetchAll() {
-  return Todo.fetchAll();
+  return Todo.forge().orderBy('is_complete', 'ASC').fetchAll();
 }
 
 export function fetchById(id) {

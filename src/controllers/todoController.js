@@ -50,6 +50,7 @@ router.route('/:todoId')
   .put((req, res, next) => {
     try {
       todoService.update(req.params.todoId, req.body).then((response) => {
+        console.log(response);
         res.json({success: true, data: camelize(response.toJSON())});
       }).catch((err) => {
         if (err.message === 'No Rows Updated') {

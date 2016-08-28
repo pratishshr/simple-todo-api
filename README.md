@@ -14,15 +14,17 @@ https://todo-simple-api.herokuapp.com/
                 "id": 1,
                 "title": "Make a simple API",
                 "description": "An api with node and express",
-                "created_at": "2016-08-26T05:21:24.000Z",
-                "updated_at": "2016-08-26T05:21:24.000Z"
+                "isComplete": false
+                "createdAt": "2016-08-26T05:21:24.000Z",
+                "updatedAt": "2016-08-26T05:21:24.000Z"
             },
             {
                 "id": 2,
                 "title": "Make a CRUD application with React",
                 "description": "CRUD app using the simple todo api as the back end",
-                "created_at": "2016-08-26T05:21:24.000Z",
-                "updated_at": "2016-08-26T05:21:24.000Z"
+                "isComplete": false
+                "createdAt": "2016-08-26T05:21:24.000Z",
+                "updatedAt": "2016-08-26T05:21:24.000Z"
             }
         ]
     }
@@ -36,8 +38,8 @@ https://todo-simple-api.herokuapp.com/
             "id": 1,
             "title": "Make a simple API",
             "description": "An api with node and express",
-            "created_at": "2016-08-26T05:21:24.000Z",
-            "updated_at": "2016-08-26T05:21:24.000Z"
+            "createdAt": "2016-08-26T05:21:24.000Z",
+            "updatedAt": "2016-08-26T05:21:24.000Z"
         }
     }
  ```
@@ -54,7 +56,7 @@ https://todo-simple-api.herokuapp.com/
         "data": {
             "title": "Some todo",
             "description": "description",
-            "created_at": "2016-08-26T12:01:12+05:45",
+            "createdAt": "2016-08-26T12:01:12+05:45",
             "id": 6
         }
     }
@@ -67,7 +69,8 @@ https://todo-simple-api.herokuapp.com/
 ```javascript
     request = {
         "title": "Another todo",
-        "description": "Another description"
+        "description": "Another description",
+        "isComplete": true
     }
 ```
 

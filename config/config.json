@@ -1,0 +1,12 @@
+{
+  "db": {
+    "client": "pg",
+    "connection": {
+      "host": "ec2-54-243-55-26.compute-1.amazonaws.com",
+      "user": "kfjbzvyhlhygzu",
+      "password": "mabRjkIZOinNjDjDg2BCEHwTFC",
+      "database": "dcdvd98997bjcu",
+      "charset": "utf8"
+    }
+  }
+}

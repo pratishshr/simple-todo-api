@@ -10,4 +10,5 @@ import config from '../config/config.json';
 const connection = knex(config.db);
 const db = bookshelf(connection);
 
+db.plugin(['pagination']);
 export default db;

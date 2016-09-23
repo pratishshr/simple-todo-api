@@ -5,7 +5,6 @@
 
 import express from 'express';
 
-// Controllers
 import todoController from './todoController';
 
 let router = express.Router();

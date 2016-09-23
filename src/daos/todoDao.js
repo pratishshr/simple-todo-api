@@ -10,6 +10,14 @@ export function fetchAll() {
   return Todo.forge().orderBy('is_complete', 'ASC').fetchAll();
 }
 
+export function fetchPage(page = 1, pageSize = 10) {
+  return Todo.forge().orderBy('is_complete', 'ASC').fetchPage({page: page, pageSize: pageSize});
+}
+
+export function fetchCount() {
+  return Todo.forge().count();
+}
+
 export function fetchById(id) {
   return Todo.forge({id: id}).fetch();
 }

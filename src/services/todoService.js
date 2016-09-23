@@ -3,17 +3,22 @@
  * on 8/20/16.
  */
 
-// Daos
 import * as todoDao from '../daos/todoDao';
 
-// Utils
 import * as validator from '../utils/validator';
 
-// Custom Errors
 import ValidationError from '../errors/ValidationError';
 
 export function fetchAll() {
   return todoDao.fetchAll();
+}
+
+export function fetchPage(page, pageSize) {
+  return todoDao.fetchPage(page, pageSize);
+}
+
+export function fetchCount() {
+  return todoDao.fetchCount();
 }
 
 export function fetchById(id) {
